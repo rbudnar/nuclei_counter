@@ -9,7 +9,8 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-
+    permissions:
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -42,6 +43,7 @@ jobs:
       - name: Create release
         uses: ncipollo/release-action@v1
         with:
+          tag: v0.0.1
           artifacts: "./dist/count_nuclei.exe"
       # - name: Create Release
       #   id: create_release
