@@ -44,4 +44,5 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ (github.event_name == 'push') && github.ref || 'manual-build' }}
+          name: Nuclei counter ${{env.GITHUB_REF_NAME}}
           artifacts: "./dist/count_nuclei.exe"
