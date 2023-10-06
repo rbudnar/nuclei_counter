@@ -21,20 +21,24 @@ jobs:
 
       - name: Install Poetry
         run: |
-          curl -sSL https://install.python-poetry.org | python -
-          echo "$HOME/.poetry/bin" >> $GITHUB_PATH
-
+          pip install poetry==1.6.1
       - name: Configure Poetry
         run: |
           poetry config virtualenvs.create true
           poetry config virtualenvs.in-project true
-
-      - name: Install dependencies using Poetry
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v2
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}-v1
+      - name: Install python dependencies
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: |
           poetry install
 
       - name: Build with PyInstaller
-        run: poetry run pyinstaller --onefile ./path_to_your_script/count_nuclei.py
+        run: poetry run pyinstaller --onefile ./nuclei_counter/count_nuclei.py
 
       - name: Upload release asset
         uses: actions/upload-release-asset@v1.0.2
