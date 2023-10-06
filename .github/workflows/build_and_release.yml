@@ -40,9 +40,11 @@ jobs:
 
       - name: Build with PyInstaller
         run: poetry run pyinstaller --onefile ./nuclei_counter/count_nuclei.py
+      - name: Zip executable file
+        run: tar -czvf ./dist/count_nuclei.zip ./dist/count_nuclei.exe
       - name: Create release
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ (github.event_name == 'push') && github.ref || 'manual-build' }}
           name: Nuclei counter ${{ github.ref_name }}
-          artifacts: "./dist/count_nuclei.exe"
+          artifacts: "./dist/count_nuclei.zip"
