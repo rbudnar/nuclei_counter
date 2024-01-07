@@ -41,7 +41,7 @@ jobs:
         run: poetry run pyinstaller --onefile ./nuclei_counter/count_nuclei.py --name count_nuclei.exe
       - name: Zip executable file
         run: |
-        Compress-Archive -Path "./dist/count_nuclei.exe" -DestinationPath "./dist/count_nuclei.zip"
+          Compress-Archive -Path "./dist/count_nuclei.exe" -DestinationPath "./dist/count_nuclei.zip"
       - name: Create release
         uses: ncipollo/release-action@v1
         with:
