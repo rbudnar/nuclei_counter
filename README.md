@@ -3,7 +3,7 @@
 This python program processes and counts nuclei in images. The following sections detail how to use the various command-line arguments available in the program. 
 
 ## Setup
-On windows-based systems, you may use one of the pre-built executable files provided in [releases](/releases); this does not require installation of python. However, if you wish to modify the code, you must clone this repository and build or run the program from source.
+On windows-based systems, you may use one of the pre-built executable files provided in [releases](https://github.com/rbudnar/nuclei_counter/releases); this does not require installation of python. However, if you wish to modify the code, you must clone this repository and build or run the program from source.
 
 **NOTE:** Due to using pyinstaller to package this code as a windows executable, this file may be flagged as a virus or as malware. This is unfortunately common for software built using pyinstaller. If your antivirus blocks the file, you'll need to flag it as safe when downloading it.
 
@@ -72,3 +72,6 @@ To use all the arguments in one command:
 ```
 python count_nuclei.py --img_dir "path/to/images" --output_dir "path/to/output" --save_images --output_count_filename "results.csv"
 ```
+
+# License
+See the [LICENSE](/LICENSE) file for license rights and limitations (MIT).
