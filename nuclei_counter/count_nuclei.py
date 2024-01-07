@@ -1,11 +1,8 @@
 import argparse
 import multiprocessing
-from multiprocessing import Pool
 import os
 from pathlib import Path
 import pandas as pd
-
-from tqdm import tqdm
 
 from nuclei_counter.counter import count_objects
 
@@ -43,7 +40,7 @@ if __name__ == "__main__":
 
     img_dir = Path(args.img_dir)
     output_file_name = args.output_count_filename
-    save_path = args.output_dir
+    save_path = Path(args.output_dir)
     save_images = args.save_images
 
     file_names = os.listdir(img_dir)
