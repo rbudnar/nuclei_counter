@@ -37,11 +37,11 @@ jobs:
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: |
           poetry install
-
       - name: Build with PyInstaller
-        run: poetry run pyinstaller --onefile ./nuclei_counter/count_nuclei.py
+        run: poetry run pyinstaller --onefile ./nuclei_counter/count_nuclei.py --name count_nuclei.exe
       - name: Zip executable file
-        run: tar -czvf ./dist/count_nuclei.zip ./dist/count_nuclei.exe
+        run: |
+          Compress-Archive -Path "./dist/count_nuclei.exe" -DestinationPath "./dist/count_nuclei.zip"
       - name: Create release
         uses: ncipollo/release-action@v1
         with:
